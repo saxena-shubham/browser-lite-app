@@ -36,126 +36,85 @@
         .btn-success { background: var(--success); color: white; padding: 10px 24px; border-radius: 8px; font-weight: 600; border: none; cursor: pointer; }
         .btn-success:hover { opacity: 0.9; }
 
-        .btn-danger { background: var(--error); color: white; padding: 10px 24px; border-radius: 8px; font-weight: 600; border: none; cursor: pointer; }
-        .btn-danger:hover { opacity: 0.9; }
+        .input-field { background: var(--bg-primary); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; color: var(--text-primary); width: 100%; font-size: 14px; transition: border-color 0.2s; }
+        .input-field:focus { outline: none; border-color: var(--accent); }
+        .input-field::placeholder { color: var(--text-secondary); }
 
-        .btn-warning { background: var(--warning); color: white; padding: 10px 24px; border-radius: 8px; font-weight: 600; border: none; cursor: pointer; }
-        .btn-warning:hover { opacity: 0.9; }
+        textarea.input-field { resize: vertical; min-height: 120px; font-family: monospace; font-size: 13px; }
+        select.input-field { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
 
-        .input-field { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; color: var(--text-primary); font-family: Inter, sans-serif; transition: border-color 0.2s; }
-        .input-field:focus { outline: none; border-color: var(--accent); box-shadow: 0px 0px 0 1px var(--accent); }
+        .step-indicator { display: flex; gap: 8px; align-items: center; }
+        .step-dot { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; transition: all 0.3s; }
+        .step-dot.active { background: var(--accent); color: white; }
+        .step-dot.completed { background: var(--success); color: white; }
+        .step-dot.pending { background: var(--bg-hover); color: var(--text-secondary); }
+        .step-line { flex: 1; height: 2px; background: var(--border); }
+        .step-line.completed { background: var(--success); }
 
-        .table { width: 100%; border-collapse: collapse; }
-        .table th { background: var(--bg-hover); padding: 12px 16px; text-align: left; font-weight: 600; border: 1px solid var(--border); }
-        .table td { padding: 12px 16px; border: 1px solid var(--border); }
-        .table tr:hover { background: var(--bg-hover); transition: background 0.2s; }
+        .badge { display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+        .badge-youtube { background: #dc262620; color: #f87171; }
+        .badge-instagram { background: #e8368020; color: #f472b6; }
+        .badge-general { background: #3b82f620; color: #60a5fa; }
+        .badge-success { background: #10b98120; color: #34d399; }
+        .badge-error { background: #ef444420; color: #f87171; }
 
-        .alert { padding: 16px 24px; border-radius: 8px; margin: 16px 0; }
-        .alert-success { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: var(--success); }
-        .alert-error { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: var(--error); }
-        .alert-warning { background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); color: var(--warning); }
+        .tag { display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 12px; cursor: pointer; border: 1px solid var(--border); margin: 3px; transition: all 0.2s; user-select: none; }
+        .tag.selected { background: var(--accent); border-color: var(--accent); color: white; }
+        .tag:hover { border-color: var(--accent); }
 
-        .text-center { text-align: center; }
-        .mt-3 {margin-top: 12px;}
-        .b { font-weight: 700; }
+        .progress-bar { height: 4px; background: var(--bg-hover); border-radius: 999px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--accent); border-radius: 999px; transition: width 0.3s; }
+
+        .toast { position: fixed; bottom: 24px; right: 24px; padding: 12px 20px; border-radius: 8px; font-size: 14px; z-index: 1000; animation: slideIn 0.3s ease; }
+        .toast-success { background: var(--success); color: white; }
+        .toast-error { background: var(--error); color: white; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .spin { animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .fade-in { animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .drop-zone { border: 2px dashed var(--border); border-radius: 12px; padding: 40px; text-align: center; transition: all 0.2s; cursor: pointer; }
+        .drop-zone:hover, .drop-zone.dragover { border-color: var(--accent); background: #3b82f610; }
+
+        .result-item { border-bottom: 1px solid var(--border); padding: 16px 0; }
+        .result-item:last-child { border-bottom: none; }
+
+        .text-truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .text-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+        .tab { padding: 8px 20px; border-radius: 8px 8px 0 0; cursor: pointer; font-weight: 500; font-size: 14px; color: var(--text-secondary); border: 1px solid transparent; border-bottom: none; transition: all 0.2s; }
+        .tab.active { background: var(--bg-card); color: var(--text-primary); border-color: var(--border); }
+
+        .expandable { max-height: 150px; overflow: hidden; position: relative; transition: max-height 0.3s; }
+        .expandable.expanded { max-height: none; }
+        .expand-btn { cursor: pointer; color: var(--accent); font-size: 13px; margin-top: 4px; }
+
+        .checkbox-custom { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
     </style>
-  
 </head>
-    
-<body style="box-sizing: border-box; display: flex; flex-direction: column; height: 100vh; overflow: hidden;o  ">
-    
-    
-  <div id="container" style="display: flex; height: 100%; flex-direction: row; overflow: hidden;">
-      
-      <sidebar type="gid" style="box-sizing: border-box; bmin-width: 3000px; bgcolor: var(--bg-secondary); flex: 0.1 1000px; border-right: 1px solid var(--border); padding: 24px; overflow-y: auto;">
-  
-  
-  
-  FJ
-  
-FJ
-  
-FJ
-  
-FJ
-  
-FJ
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-FJ
-  
-FJ
-  
-FJ
-  
-FJ
-  
-FJ
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-FJ
-  
-FJ
-  
-FJ
-  
-FJ
-  
-FJ
-  
-FJ
-  
-  
-  
-Box="0 0 24 24" style="display:inline;vertical-align:middle;margin-right:4px;"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="border-b" style="border-color: var(--border);">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div style="width:36px;height:36px;background:var(--accent);border-radius:8px;" class="flex items-center justify-center">
+                    <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold">Browser Lite</h1>
+                    <p class="text-xs" style="color:var(--text-secondary);">Web Content Extractor</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="openSettings()" class="btn-secondary" style="padding:8px 16px;font-size:13px;">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="display:inline;vertical-align:middle;margin-right:4px;"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
                     AI Settings
                 </button>
             </div>
@@ -426,7 +385,9 @@ Box="0 0 24 24" style="display:inline;vertical-align:middle;margin-right:4px;"><
         if (newUrls.length === 0) { toast('No valid URLs found', 'error'); return; }
         addUrlsToList(newUrls);
         document.getElementById('urlInput').value = '';
-     handleFileUpload(event) {
+    }
+
+    async function handleFileUpload(event) {
         const file = event.target.files[0];
         if (!file) return;
         const formData = new FormData();
